@@ -1,0 +1,40 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.6'
+	id 'io.spring.dependency-management' version '1.1.0'
+	id 'org.graalvm.buildtools.native' version '0.9.20'
+}
+
+group = 'com.ivr'
+version = '1.0.0-RELEASE'
+sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+	implementation 'org.springframework.boot:spring-boot-starter-batch'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.15.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
+    implementation 'commons-io:commons-io:2.11.0'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation 'com.microsoft.sqlserver:mssql-jdbc'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.batch:spring-batch-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
